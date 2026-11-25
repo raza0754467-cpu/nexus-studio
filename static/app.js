@@ -21,6 +21,7 @@ const state = {
   })(),
   currentUser: null,
   authMode: "login",
+  authConfig: { google_client_id: "", otp_required: false },
   showcaseItems: [],
 };
 
@@ -301,15 +302,64 @@ function switchAuthMode(mode) {
   $$(".auth-tab").forEach((t) => t.classList.toggle("active", t.dataset.authMode === mode));
   const isSignup = mode === "signup";
   $("#authNameWrap").classList.toggle("hidden", !isSignup);
+  $("#realEmailHint")?.classList.toggle("hidden", !isSignup);
+  const showOtp = isSignup && !!state.authConfig.otp_required;
+  $("#btnSendOtp")?.classList.toggle("hidden", !showOtp);
+  $("#authOtpWrap")?.classList.toggle("hidden", !showOtp);
+  $("#authInfo")?.classList.add("hidden");
+  $("#authError")?.classList.add("hidden");
   $("#authTitle").textContent = isSignup ? "Create your account" : "Welcome back";
   $("#authSubtitle").textContent = isSignup
-    ? "Start chatting free and create your first Full HD studio video ($0)."
-    : "Sign in to access your saved chats, video projects, and plans.";
+    ? "Sign up with Google or a real email to unlock your free Full HD studio video ($0)."
+    : "Sign in with Google or your email to access Video Studio & saved projects.";
   $("#btnAuthSubmit").textContent = isSignup ? "Create account" : "Sign in";
   const swFoot = $("#authSwitchFoot");
   if (swFoot) {
     swFoot.querySelector("span").textContent = isSignup ? "Already have an account?" : "New to NEXUS?";
     $("#btnQuickSwitchAuth").textContent = isSignup ? "Sign in instead" : "Create a free account";
+  }
+}
+
+function initGoogleSignIn() {
+  const cid = state.authConfig.google_client_id;
+  const fallbackBtn = $("#btnGoogleFallback");
+  const container = $("#googleBtnContainer");
+  if (!cid || !window.google || !window.google.accounts || !window.google.accounts.id) {
+    if (fallbackBtn) {
+      fallbackBtn.classList.remove("hidden");
+      fallbackBtn.onclick = () => {
+        if (!cid) {
+          toast("Google Sign-In activates as soon as GOOGLE_CLIENT_ID is added in settings. Use your real email below!");
+        } else {
+          window.google?.accounts?.id?.prompt();
+        }
+      };
+    }
+    return;
+  }
+  window.google.accounts.id.initialize({
+    client_id: cid,
+    callback: async (response) => {
+      try {
+        const res = await api("/api/auth/google", { method: "POST", body: JSON.stringify({ credential: response.credential }) });
+        state.authToken = res.token;
+        state.currentUser = res.user;
+        localStorage.setItem("nx_auth_token", res.token);
+        $("#authModal").classList.add("hidden");
+        renderAuthUI();
+        toast(`Signed in with Google as ${res.user.name}!`);
+        if (state.pageMode === "landing") openWorkspace("chat");
+      } catch (err) {
+        const errBox = $("#authError");
+        errBox.textContent = err.message;
+        errBox.classList.remove("hidden");
+      }
+    },
+  });
+  if (container) {
+    container.innerHTML = "";
+    window.google.accounts.id.renderButton(container, { theme: "outline", size: "large", width: 380, text: "continue_with", shape: "pill" });
+    if (fallbackBtn) fallbackBtn.classList.add("hidden");
   }
 }
 
@@ -323,8 +373,10 @@ async function loadMeta() {
       { id: "medium", name: "Medium", tagline: "Deep reasoning, strategy & studio scripts" },
     ];
     state.voices = meta.voices || {};
+    state.authConfig = meta.auth_config || { google_client_id: "", otp_required: false };
     renderModelControls();
     populateVoiceSelect();
+    setTimeout(initGoogleSignIn, 500);
   } catch (e) {}
 }
 
@@ -534,7 +586,13 @@ async function sendChat(overrideMsg = null) {
           finalText = ev.reply || "Done.";
           actPill.classList.add("hidden");
 
-          if (ev.action === "quota_limit") {
+          if (ev.action === "login_required") {
+            finalHtml = `${renderMarkdown(finalText)}
+              <div class="chat-action-card">
+                <div><strong>Sign In Required for Video Studio</strong><div style="font-size:12px; color:var(--text-2);">Chat is 100% free! Sign in with Google or a real email to create your free HD video.</div></div>
+                <button class="btn-primary-pill btn-sm" onclick="openAuthModal('signup')">Sign in / Sign up</button>
+              </div>`;
+          } else if (ev.action === "quota_limit") {
             finalHtml = `${renderMarkdown(finalText)}
               <div class="chat-action-card">
                 <div><strong>Free Video Limit Reached</strong><div style="font-size:12px; color:var(--text-2);">Upgrade to Creator Pro for unlimited Full HD global videos.</div></div>
@@ -590,6 +648,7 @@ async function sendChat(overrideMsg = null) {
   }
 }
 
+window.openAuthModal = openAuthModal;
 window.copyEncoded = (enc) => copyText(decodeURIComponent(enc), "Response");
 window.openProjectFromChat = (pid) => selectProject(pid);
 window.switchView = switchView;
@@ -642,6 +701,11 @@ async function refreshActiveProject() {
 }
 
 async function launchProduction() {
+  if (!state.currentUser) {
+    openAuthModal("signup");
+    toast("Sign in with Google or a real email to create your free HD video.");
+    return;
+  }
   const topic = $("#topicInput").value.trim();
   if (!topic) {
     toast("Please enter a video topic first.");
@@ -681,7 +745,8 @@ async function launchProduction() {
     state.pollTimer = setTimeout(refreshActiveProject, 1200);
   } catch (e) {
     toast(e.message);
-    if (e.status === 402) switchView("plans");
+    if (e.status === 401) openAuthModal("signup");
+    else if (e.status === 402) switchView("plans");
   } finally {
     btn.disabled = false;
     btn.querySelector("span").textContent = "Create Video";
@@ -1176,6 +1241,33 @@ function bindEvents() {
     $("#btnTogglePw").textContent = isPw ? "Hide" : "Show";
   };
 
+  $("#btnSendOtp").onclick = async () => {
+    const email = $("#authEmailInput").value.trim();
+    const errBox = $("#authError");
+    const infoBox = $("#authInfo");
+    errBox.classList.add("hidden");
+    infoBox.classList.add("hidden");
+    if (!email) {
+      errBox.textContent = "Enter your real email address first.";
+      errBox.classList.remove("hidden");
+      return;
+    }
+    const btn = $("#btnSendOtp");
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+    try {
+      const res = await api("/api/auth/send-otp", { method: "POST", body: JSON.stringify({ email }) });
+      infoBox.textContent = res.message || "6-digit OTP sent to your email!";
+      infoBox.classList.remove("hidden");
+    } catch (err) {
+      errBox.textContent = err.message;
+      errBox.classList.remove("hidden");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Send OTP";
+    }
+  };
+
   $("#authForm").onsubmit = async (e) => {
     e.preventDefault();
     const errBox = $("#authError");
@@ -1183,9 +1275,10 @@ function bindEvents() {
     const email = $("#authEmailInput").value.trim();
     const password = $("#authPassInput").value;
     const name = $("#authNameInput").value.trim();
+    const otp_code = ($("#authOtpInput")?.value || "").trim();
     try {
       const endpoint = state.authMode === "signup" ? "/api/auth/register" : "/api/auth/login";
-      const payload = state.authMode === "signup" ? { name, email, password } : { email, password };
+      const payload = state.authMode === "signup" ? { name, email, password, otp_code } : { email, password };
       const res = await api(endpoint, { method: "POST", body: JSON.stringify(payload) });
       state.authToken = res.token;
       state.currentUser = res.user;

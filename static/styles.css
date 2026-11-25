@@ -1625,7 +1625,57 @@ button { font-family: inherit; cursor: pointer; }
   padding: 40px 28px;
   background: #fff;
 }
-.auth-card-page { width: 100%; max-width: 400px; }
+.auth-card-page { width: 100%; max-width: 410px; }
+.google-auth-wrap { margin-bottom: 14px; }
+.btn-google-auth {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border-strong);
+  background: #fff;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+.btn-google-auth:hover { background: var(--surface); border-color: #94a3b8; box-shadow: var(--shadow-xs); }
+.auth-or-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0 16px;
+  color: var(--text-3);
+  font-size: 12px;
+  font-weight: 500;
+}
+.auth-or-divider::before, .auth-or-divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.otp-email-row { display: flex; gap: 8px; align-items: center; }
+.otp-email-row input { flex: 1; }
+.btn-send-otp {
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 10px 13px;
+  border-radius: 11px;
+  white-space: nowrap;
+}
+.btn-send-otp:hover { background: var(--accent); color: #fff; }
+.btn-send-otp:disabled { opacity: 0.55; cursor: not-allowed; }
+.field-hint { display: block; margin-top: 5px; font-size: 11.5px; color: var(--text-3); }
+.auth-info {
+  background: var(--green-soft);
+  color: var(--green);
+  border: 1px solid #a7f3d0;
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: 12.5px;
+}
 .pw-input-wrap { position: relative; display: flex; align-items: center; }
 .pw-input-wrap input { padding-right: 64px; }
 .pw-toggle-btn {

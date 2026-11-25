@@ -19,10 +19,13 @@ import httpx
 from auth_manager import (
     check_video_quota,
     get_user_by_token,
+    is_smtp_configured,
     login_user,
+    login_with_google_credential,
     logout_token,
     record_video_usage,
     register_user,
+    request_email_otp,
     update_user_plan,
 )
 from config_manager import (
@@ -161,6 +164,15 @@ class RegisterRequest(BaseModel):
     name: str
     email: str
     password: str
+    otp_code: str = ""
+
+
+class OtpRequest(BaseModel):
+    email: str
+
+
+class GoogleAuthRequest(BaseModel):
+    credential: str
 
 
 class LoginRequest(BaseModel):
@@ -254,6 +266,12 @@ class ConfigUpdateRequest(BaseModel):
     pollinations_enabled: Optional[bool] = None
     pexels_api_key: Optional[str] = None
     pixabay_api_key: Optional[str] = None
+    google_client_id: Optional[str] = None
+    smtp_host: Optional[str] = None
+    smtp_port: Optional[int] = None
+    smtp_user: Optional[str] = None
+    smtp_pass: Optional[str] = None
+    smtp_from: Optional[str] = None
     active_plan: Optional[str] = None
 
 
@@ -491,6 +509,10 @@ async def get_meta():
         "models": public_models,
         "active_plan": SAAS_PLANS.get(active_plan_id, SAAS_PLANS["owner"]),
         "plans": SAAS_PLANS,
+        "auth_config": {
+            "google_client_id": (cfg.get("google_client_id") or "").strip(),
+            "otp_required": is_smtp_configured(),
+        },
     }
 
 
@@ -741,10 +763,10 @@ async def api_create_project(
         raise HTTPException(status_code=400, detail="Topic is required")
 
     token = (authorization or "").replace("Bearer ", "").strip()
-    # Enforce $0 Free Plan = 1 free trial video (Owner/Pro/Agency remain unlimited)
-    allowed, reason = check_video_quota(token, x_guest_id)
+    # Strictly enforce: Login required for video generation + $0 Free Plan = 1 free trial video
+    allowed, code, reason = check_video_quota(token)
     if not allowed:
-        raise HTTPException(status_code=402, detail=reason)
+        raise HTTPException(status_code=code, detail=reason)
 
     pid = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_{_slugify(topic)}_{uuid.uuid4().hex[:4]}"
     voice_key = req.voice if req.voice in VOICE_PRESETS else _pick_default_voice(req.language)
@@ -777,7 +799,7 @@ async def api_create_project(
         "logs": [{"time": _now_str(), "msg": f"Studio launched 5-Agent Team for: '{topic}'"}],
     }
     _save_project(proj)
-    record_video_usage(token, x_guest_id)
+    record_video_usage(token)
 
     task = asyncio.create_task(_run_full_pipeline(proj))
     RUNNING_TASKS[pid] = task
@@ -875,12 +897,28 @@ async def api_browser_run(req: BrowserRunRequest):
     return res
 
 
+@app.post("/api/auth/send-otp")
+async def api_auth_send_otp(req: OtpRequest):
+    try:
+        return await asyncio.to_thread(request_email_otp, req.email)
+    except (ValueError, RuntimeError) as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+
+
 @app.post("/api/auth/register")
 async def api_auth_register(req: RegisterRequest):
     try:
-        return register_user(req.name, req.email, req.password)
+        return await asyncio.to_thread(register_user, req.name, req.email, req.password, req.otp_code)
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc))
+
+
+@app.post("/api/auth/google")
+async def api_auth_google(req: GoogleAuthRequest):
+    try:
+        return await login_with_google_credential(req.credential)
+    except ValueError as exc:
+        raise HTTPException(status_code=401, detail=str(exc))
 
 
 @app.post("/api/auth/login")
@@ -959,9 +997,10 @@ async def api_chat_stream(
             params = decision.get("params") or {}
 
             if action == "start_video" and params.get("topic"):
-                allowed, reason = check_video_quota(token, x_guest_id)
+                allowed, code, reason = check_video_quota(token)
                 if not allowed:
-                    await push({"type": "final", "action": "quota_limit", "reply": reason})
+                    act_tag = "login_required" if code == 401 else "quota_limit"
+                    await push({"type": "final", "action": act_tag, "reply": reason})
                     return
 
                 dur = max(30, min(600, int(params.get("duration_sec") or 35)))

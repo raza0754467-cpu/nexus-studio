@@ -127,6 +127,12 @@ DEFAULT_CONFIG: Dict[str, Any] = {
     "pollinations_enabled": True,
     "pexels_api_key": "",
     "pixabay_api_key": "",
+    "google_client_id": "",
+    "smtp_host": "smtp.gmail.com",
+    "smtp_port": 587,
+    "smtp_user": "",
+    "smtp_pass": "",
+    "smtp_from": "",
     "active_plan": "owner",
     "provider_order": ["groq", "gemini", "cerebras", "openrouter", "custom", "ollama", "pollinations"],
     "custom_models": DEFAULT_CUSTOM_MODELS,
@@ -149,6 +155,11 @@ def load_config() -> Dict[str, Any]:
         "openrouter_api_key": "OPENROUTER_API_KEY",
         "pexels_api_key": "PEXELS_API_KEY",
         "pixabay_api_key": "PIXABAY_API_KEY",
+        "google_client_id": "GOOGLE_CLIENT_ID",
+        "smtp_host": "SMTP_HOST",
+        "smtp_user": "SMTP_USER",
+        "smtp_pass": "SMTP_PASS",
+        "smtp_from": "SMTP_FROM",
     }
     for k, env_name in env_map.items():
         if not cfg.get(k) and os.environ.get(env_name):
@@ -181,6 +192,7 @@ def masked_config() -> Dict[str, Any]:
         "custom_api_key",
         "pexels_api_key",
         "pixabay_api_key",
+        "smtp_pass",
     ]
     out: Dict[str, Any] = {
         "cerebras_model": cfg["cerebras_model"],
@@ -193,6 +205,11 @@ def masked_config() -> Dict[str, Any]:
         "ollama_url": cfg["ollama_url"],
         "ollama_model": cfg["ollama_model"],
         "pollinations_enabled": cfg.get("pollinations_enabled", True),
+        "google_client_id": cfg.get("google_client_id", ""),
+        "smtp_host": cfg.get("smtp_host", "smtp.gmail.com"),
+        "smtp_port": cfg.get("smtp_port", 587),
+        "smtp_user": cfg.get("smtp_user", ""),
+        "smtp_from": cfg.get("smtp_from", ""),
         "active_plan": cfg.get("active_plan", "owner"),
         "provider_order": cfg.get("provider_order", DEFAULT_CONFIG["provider_order"]),
         "custom_models": cfg.get("custom_models") or DEFAULT_CUSTOM_MODELS,
