@@ -87,6 +87,12 @@ def _validate_project_id(project_id: str) -> str:
 
 
 def _require_localhost(request: Request) -> None:
+    # Block remote traffic coming through tunnels (localhost.run / Cloudflare) or cloud reverse proxies
+    if request.headers.get("cf-connecting-ip") or request.headers.get("x-forwarded-for"):
+        raise HTTPException(status_code=403, detail="Admin access is restricted to direct localhost only.")
+    host_hdr = (request.headers.get("host") or "").split(":")[0].strip().lower()
+    if host_hdr and host_hdr not in ("127.0.0.1", "localhost", "::1", "testserver"):
+        raise HTTPException(status_code=403, detail="Admin access is restricted to direct localhost only.")
     host = request.client.host if request.client else ""
     if host not in ("127.0.0.1", "::1", "localhost", "testclient"):
         raise HTTPException(status_code=403, detail="Admin access is restricted to localhost.")
