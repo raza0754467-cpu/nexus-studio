@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXUS — Backend Admin Console</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f8f9fb; color: #111827; padding: 28px 20px; }
+    .wrap { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+    .top { display: flex; justify-content: space-between; align-items: center; }
+    h1 { font-size: 22px; font-weight: 700; }
+    .sub { font-size: 13px; color: #6b7280; margin-top: 2px; }
+    .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+    .card h2 { font-size: 15px; font-weight: 600; margin-bottom: 14px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .grid3 { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 10px; }
+    label { display: flex; justify-content: space-between; font-size: 11.5px; font-weight: 600; color: #4b5563; margin-bottom: 5px; }
+    label a { color: #2563eb; text-decoration: none; }
+    input { width: 100%; padding: 9px 11px; border: 1px solid #d1d5db; border-radius: 9px; font-family: 'JetBrains Mono', monospace; font-size: 12px; background: #fafafa; outline: none; }
+    input:focus { border-color: #2563eb; background: #fff; }
+    .row { display: flex; gap: 10px; justify-content: flex-end; margin-top: 14px; flex-wrap: wrap; }
+    .btn { padding: 9px 16px; border-radius: 999px; border: 1px solid #d1d5db; background: #fff; color: #111827; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .btn-dark { background: #111827; color: #fff; border-color: #111827; }
+    .btn-dark:hover { background: #2563eb; border-color: #2563eb; }
+    .cm-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; margin-bottom: 8px; }
+    .out { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; display: flex; flex-direction: column; gap: 5px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>NEXUS Backend Admin</h1>
+        <p class="sub">Private owner console — hidden from public users on the main app.</p>
+      </div>
+      <a class="btn" href="/">← Back to NEXUS App</a>
+    </div>
+
+    <div class="card">
+      <h2>1. Backend AI &amp; Media API Keys (Private)</h2>
+      <div class="grid">
+        <div><label>Groq Key <a href="https://console.groq.com/keys" target="_blank">Console ↗</a></label><input type="password" id="kGroq" /></div>
+        <div><label>Gemini Key <a href="https://aistudio.google.com/apikey" target="_blank">Studio ↗</a></label><input type="password" id="kGemini" /></div>
+        <div><label>OpenRouter Key <a href="https://openrouter.ai/keys" target="_blank">Keys ↗</a></label><input type="password" id="kOR" /></div>
+        <div><label>Cerebras Key (Optional) <a href="https://cloud.cerebras.ai" target="_blank">Cloud ↗</a></label><input type="password" id="kCer" /></div>
+        <div><label>Pexels HD Video Key (Optional) <a href="https://www.pexels.com/api/" target="_blank">API ↗</a></label><input type="password" id="kPex" /></div>
+        <div><label>Pixabay Key (Optional) <a href="https://pixabay.com/api/docs/" target="_blank">Docs ↗</a></label><input type="password" id="kPix" /></div>
+      </div>
+      <div style="margin-top:12px;">
+        <label>Universal Custom OpenAI-Compatible Provider</label>
+        <div class="grid3">
+          <input type="text" id="kCustUrl" placeholder="Base URL" />
+          <input type="password" id="kCustKey" placeholder="API Key" />
+          <input type="text" id="kCustModel" placeholder="Model ID" />
+        </div>
+      </div>
+      <div class="row">
+        <button class="btn" id="btnTest">Test Connections</button>
+        <button class="btn" id="btnSync">Sync Live Models</button>
+        <button class="btn btn-dark" id="btnSave">Save Private Keys</button>
+      </div>
+      <div class="out" id="outBox"></div>
+    </div>
+
+    <div class="card">
+      <h2>2. Public Branded Model Presets (Shown to Users)</h2>
+      <div id="modelsList"></div>
+      <div class="grid" style="margin-top:12px;">
+        <input type="text" id="mName" placeholder="Public Model Name (e.g., Ultra, Pro, Urdu Master)" />
+        <input type="text" id="mTag" placeholder="Short user-facing tagline" />
+        <input type="text" id="mGroq" value="qwen/qwen3.8-27b" placeholder="Backend Primary Model" />
+        <input type="text" id="mGem" value="gemini-flash-latest" placeholder="Backend Backup Model" />
+      </div>
+      <div class="row">
+        <button class="btn btn-dark" id="btnAddModel">+ Add Public Model</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const $ = (s) => document.querySelector(s);
+    async function api(u, o={}) {
+      const r = await fetch(u, { headers: {'Content-Type':'application/json'}, ...o });
+      return r.json();
+    }
+    async function load() {
+      const c = await api('/api/config');
+      $('#kGroq').value = c.groq_api_key || '';
+      $('#kGemini').value = c.gemini_api_key || '';
+      $('#kOR').value = c.openrouter_api_key || '';
+      $('#kCer').value = c.cerebras_api_key || '';
+      $('#kPex').value = c.pexels_api_key || '';
+      $('#kPix').value = c.pixabay_api_key || '';
+      $('#kCustUrl').value = c.custom_api_url || '';
+      $('#kCustKey').value = c.custom_api_key || '';
+      $('#kCustModel').value = c.custom_api_model || '';
+      renderModels(c.custom_models || []);
+    }
+    function renderModels(list) {
+      $('#modelsList').innerHTML = list.map(m => `
+        <div class="cm-row">
+          <div>
+            <strong>${m.name}</strong> — <span style="font-size:12px;color:#6b7280;">${m.tagline || ''}</span>
+            <div style="font-family:JetBrains Mono,monospace;font-size:11px;color:#9ca3af;">${m.groq_model} | ${m.gemini_model}</div>
+          </div>
+          ${m.builtin ? '<span style="font-size:11px;color:#6b7280;">Built-in</span>' : `<button class="btn" onclick="delModel('${m.id}')">Delete</button>`}
+        </div>`).join('');
+    }
+    window.delModel = async (id) => { const r = await api('/api/models/' + id, { method: 'DELETE' }); renderModels(r.custom_models || []); };
+    $('#btnSave').onclick = async () => {
+      await api('/api/config', { method:'POST', body: JSON.stringify({
+        groq_api_key: $('#kGroq').value, gemini_api_key: $('#kGemini').value,
+        openrouter_api_key: $('#kOR').value, cerebras_api_key: $('#kCer').value,
+        pexels_api_key: $('#kPex').value, pixabay_api_key: $('#kPix').value,
+        custom_api_url: $('#kCustUrl').value, custom_api_key: $('#kCustKey').value, custom_api_model: $('#kCustModel').value
+      })});
+      $('#outBox').innerHTML = '<div style="color:#059669;">✓ Saved privately to data/config.json</div>';
+    };
+    $('#btnTest').onclick = async () => {
+      $('#outBox').innerHTML = '<div>Testing...</div>';
+      const r = await api('/api/config/test', { method:'POST' });
+      $('#outBox').innerHTML = (r.results || []).map(x => `<div style="color:${x.ok?'#059669':'#dc2626'}">${x.ok?'✓':'✕'} ${x.provider.toUpperCase()}: ${x.message}</div>`).join('');
+    };
+    $('#btnSync').onclick = async () => {
+      $('#outBox').innerHTML = '<div>Syncing live models...</div>';
+      const r = await api('/api/models/sync', { method:'POST' });
+      $('#outBox').innerHTML = Object.entries(r.discovered || {}).map(([k,v]) => `<div><strong>${k.toUpperCase()}:</strong> ${(v||[]).join(', ') || 'none'}</div>`).join('');
+    };
+    $('#btnAddModel').onclick = async () => {
+      if (!$('#mName').value.trim()) return;
+      const r = await api('/api/models', { method:'POST', body: JSON.stringify({
+        name: $('#mName').value.trim(), tagline: $('#mTag').value.trim(),
+        groq_model: $('#mGroq').value.trim(), gemini_model: $('#mGem').value.trim()
+      })});
+      renderModels(r.custom_models || []);
+      $('#mName').value = ''; $('#mTag').value = '';
+    };
+    load();
+  </script>
+</body>
+</html>

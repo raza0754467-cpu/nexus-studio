@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXUS — Global AI Conversation &amp; 5-Agent Video Studio</title>
+  <meta name="description" content="NEXUS combines fast, natural human-like AI conversation with a global 5-agent video production studio in 16+ languages and 38+ realistic voices." />
+  <meta property="og:title" content="NEXUS — Global AI Chat &amp; 5-Agent Video Studio" />
+  <meta property="og:description" content="Chat naturally at lightning speed and create Full HD vertical &amp; widescreen videos with kinetic captions across every language." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NEXUS",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web",
+    "offers": [
+      { "@type": "Offer", "name": "Free Trial", "price": "0", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Creator Pro", "price": "19", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Agency Studio", "price": "49", "priceCurrency": "USD" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===================================================================== -->
+  <!-- PREMIUM ANIMATED LANDING HOME PAGE                                    -->
+  <!-- ===================================================================== -->
+  <div class="landing-page" id="landingView">
+    <div class="hero-ambient" aria-hidden="true">
+      <div class="ambient-orb orb-1"></div>
+      <div class="ambient-orb orb-2"></div>
+      <div class="ambient-grid"></div>
+    </div>
+
+    <!-- STICKY GLASS NAVIGATION -->
+    <header class="land-nav">
+      <div class="land-nav-inner">
+        <a href="#top" class="brand-lockup" id="landBrandLink">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="2" width="20" height="20" rx="6" fill="currentColor"/>
+              <path d="M8 16V8l8 8V8" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="brand-word">NEXUS</span>
+        </a>
+
+        <nav class="land-links" aria-label="Homepage sections">
+          <a href="#showcase">Showcase</a>
+          <a href="#pipeline">5-Agent Studio</a>
+          <a href="#global">Global Voices</a>
+          <a href="#pricing">Pricing</a>
+        </nav>
+
+        <div class="land-actions" id="landNavGuest">
+          <button class="btn-ghost-nav" data-open-workspace="chat">Start Chat</button>
+          <button class="btn-ghost-nav" data-open-auth="login">Log in</button>
+          <button class="btn-dark-pill" data-open-auth="signup">Sign up</button>
+        </div>
+
+        <div class="land-actions hidden" id="landNavUser">
+          <button class="btn-ghost-nav" data-open-workspace="factory">Video Studio</button>
+          <button class="btn-dark-pill" data-open-workspace="chat">Open Workspace</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="top">
+      <div class="land-container hero-inner">
+        <div class="hero-eyebrow reveal">
+          <span class="pulse-dot"></span>
+          <span>Global AI Intelligence &amp; 5-Agent Video Production</span>
+        </div>
+
+        <h1 class="hero-title reveal">
+          Think faster.<br />
+          <span class="hero-gradient-text">Produce studio videos</span> for the world.
+        </h1>
+
+        <p class="hero-sub reveal">
+          An ultra-fast, natural conversational partner paired with five autonomous production agents — researching live trends, writing scripts, recording natural voices across 16+ languages, and mastering Full HD animated videos automatically.
+        </p>
+
+        <div class="hero-cta-row reveal">
+          <button class="btn-hero-primary" data-open-workspace="chat">
+            <span>Start Chatting</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+          <button class="btn-hero-secondary" data-open-workspace="factory">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            <span>Try 1 Free Video ($0)</span>
+          </button>
+        </div>
+
+        <div class="hero-metrics reveal">
+          <div class="metric-item"><strong>16+</strong><span>World Languages</span></div>
+          <div class="metric-sep"></div>
+          <div class="metric-item"><strong>38+</strong><span>Realistic Voices</span></div>
+          <div class="metric-sep"></div>
+          <div class="metric-item"><strong>1080p</strong><span>9:16 &amp; 16:9 HD</span></div>
+          <div class="metric-sep"></div>
+          <div class="metric-item"><strong>1 Free</strong><span>Full Trial Video</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REAL PLAYABLE VIDEO SHOWCASE GALLERY -->
+    <section class="land-section" id="showcase">
+      <div class="land-container">
+        <div class="section-head reveal">
+          <span class="sec-kicker">REAL OUTPUT GALLERY</span>
+          <h2 class="sec-title">Made with NEXUS. Ready to publish.</h2>
+          <p class="sec-sub">Every reel below is a real Full HD video with word-synced animated captions, natural voiceover, and smooth scene transitions. Click any video to watch with sound.</p>
+        </div>
+
+        <div class="showcase-grid" id="showcaseGrid">
+          <div class="showcase-skeleton">Loading real studio creations...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REALISTIC 5-AGENT PRODUCTION PIPELINE (ZERO EMOJIS!) -->
+    <section class="land-section alt-bg" id="pipeline">
+      <div class="land-container">
+        <div class="section-head reveal">
+          <span class="sec-kicker">5-AGENT PIPELINE</span>
+          <h2 class="sec-title">Five specialists working in sync on every video.</h2>
+          <p class="sec-sub">Instead of random stock clips and robotic captions, NEXUS runs a disciplined five-stage studio workflow from initial trend intelligence to final cinema export.</p>
+        </div>
+
+        <div class="pipeline-showcase reveal">
+          <div class="pipe-track" aria-hidden="true"><div class="pipe-beam"></div></div>
+          <div class="pipe-grid">
+            <div class="pipe-node">
+              <div class="pipe-node-top">
+                <span class="pipe-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M11 8v6M8 11h6"/></svg>
+                </span>
+                <span class="pipe-num">01</span>
+              </div>
+              <h3>Market Researcher</h3>
+              <p>Scans live Google &amp; YouTube search demand across 20+ countries to surface winning hooks and breakout topics.</p>
+            </div>
+
+            <div class="pipe-node">
+              <div class="pipe-node-top">
+                <span class="pipe-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg>
+                </span>
+                <span class="pipe-num">02</span>
+              </div>
+              <h3>Content Strategist</h3>
+              <p>Architects scene-by-scene pacing, retention beats, and tailored playbooks for YouTube, Reels, TikTok, and Facebook.</p>
+            </div>
+
+            <div class="pipe-node">
+              <div class="pipe-node-top">
+                <span class="pipe-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                </span>
+                <span class="pipe-num">03</span>
+              </div>
+              <h3>Viral Scriptwriter</h3>
+              <p>Drafts punchy zero-cliché narration in your chosen language, exact word-synced captions, and full SEO upload packs.</p>
+            </div>
+
+            <div class="pipe-node">
+              <div class="pipe-node-top">
+                <span class="pipe-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+                </span>
+                <span class="pipe-num">04</span>
+              </div>
+              <h3>Voice &amp; Visual Producer</h3>
+              <p>Records expressive human-like voiceovers with millisecond word timestamps, curates clean visuals, and designs cover art.</p>
+            </div>
+
+            <div class="pipe-node">
+              <div class="pipe-node-top">
+                <span class="pipe-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="m10 9 5 3-5 3V9Z"/></svg>
+                </span>
+                <span class="pipe-num">05</span>
+              </div>
+              <h3>Cinema Editor</h3>
+              <p>Composites kinetic pop captions, smooth crossfade transitions, ambient sound design, and exports Full HD MP4 + SRT.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GLOBAL ALL-COUNTRIES & LIVE VOICE PREVIEW SECTION -->
+    <section class="land-section" id="global">
+      <div class="land-container">
+        <div class="global-split reveal">
+          <div class="global-copy">
+            <span class="sec-kicker">BUILT FOR EVERY COUNTRY</span>
+            <h2 class="sec-title">Create in 16+ languages with voices that sound genuinely human.</h2>
+            <p class="sec-sub">Whether your audience is in New York, London, Karachi, Mumbai, Dubai, Riyadh, Madrid, Paris, Berlin, São Paulo, Istanbul, Jakarta, or Tokyo — NEXUS adapts language, search trends, pacing, and studio voices natively.</p>
+            <div class="country-chips">
+              <span>United States</span><span>United Kingdom</span><span>Pakistan</span><span>India</span>
+              <span>UAE</span><span>Saudi Arabia</span><span>Spain</span><span>Mexico</span>
+              <span>France</span><span>Germany</span><span>Brazil</span><span>Turkey</span>
+              <span>Indonesia</span><span>Italy</span><span>Japan</span><span>South Korea</span>
+              <span>Canada</span><span>Australia</span>
+            </div>
+          </div>
+
+          <div class="voice-demo-card">
+            <div class="voice-demo-head">
+              <strong>Live Studio Voice Samples</strong>
+              <span class="mini-badge">Click to listen</span>
+            </div>
+            <div class="voice-demo-list">
+              <button class="voice-sample-row" data-demo-voice="en_ava_multi">
+                <span class="vs-play"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+                <span class="vs-info"><strong>Ava</strong><small>English (US) • Ultra-Natural Female</small></span>
+                <span class="vs-tag">Global</span>
+              </button>
+              <button class="voice-sample-row" data-demo-voice="urdu_female_noor">
+                <span class="vs-play"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+                <span class="vs-info"><strong>Noor</strong><small>Urdu (Pakistan) • Warm Expressive Female</small></span>
+                <span class="vs-tag">Urdu</span>
+              </button>
+              <button class="voice-sample-row" data-demo-voice="ar_zariyah_sa">
+                <span class="vs-play"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+                <span class="vs-info"><strong>Zariyah</strong><small>Arabic (Saudi / Gulf) • Natural Female</small></span>
+                <span class="vs-tag">Arabic</span>
+              </button>
+              <button class="voice-sample-row" data-demo-voice="es_dalia_mx">
+                <span class="vs-play"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+                <span class="vs-info"><strong>Dalia</strong><small>Spanish (Global) • Expressive Female</small></span>
+                <span class="vs-tag">Spanish</span>
+              </button>
+              <button class="voice-sample-row" data-demo-voice="hindi_female_ananya">
+                <span class="vs-play"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+                <span class="vs-info"><strong>Ananya</strong><small>Hindi (India) • Natural Storytelling</small></span>
+                <span class="vs-tag">Hindi</span>
+              </button>
+              <button class="voice-sample-row" data-demo-voice="en_ryan_uk">
+                <span class="vs-play"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+                <span class="vs-info"><strong>Ryan</strong><small>English (UK) • Luxury Editorial Male</small></span>
+                <span class="vs-tag">British</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING SECTION ON HOMEPAGE -->
+    <section class="land-section alt-bg" id="pricing">
+      <div class="land-container">
+        <div class="section-head reveal">
+          <span class="sec-kicker">TRANSPARENT PRICING</span>
+          <h2 class="sec-title">Start free with 1 real video. Scale when ready.</h2>
+          <p class="sec-sub">Experience the full quality of NEXUS with your first studio video at $0, then unlock unlimited long-form production worldwide.</p>
+        </div>
+
+        <div class="plans-grid reveal">
+          <div class="plan-card">
+            <div class="plan-tier">FREE TRIAL</div>
+            <div class="plan-price">$0<span>/forever</span></div>
+            <div class="plan-desc">Test the real quality of NEXUS Chat and create 1 complete Full HD video free.</div>
+            <ul class="plan-list">
+              <li>1 Full HD AI Video (experience real quality)</li>
+              <li>Fast, natural human-like AI Chat</li>
+              <li>Global Search Trend Radar (20+ countries)</li>
+              <li>Preview all 38+ studio voices</li>
+            </ul>
+            <button class="btn-outline-full" data-open-workspace="factory">Try 1 Free Video</button>
+          </div>
+
+          <div class="plan-card featured">
+            <div class="plan-badge">MOST POPULAR</div>
+            <div class="plan-tier">CREATOR PRO</div>
+            <div class="plan-price">$19<span>/month</span></div>
+            <div class="plan-desc">For creators publishing daily Shorts, Reels, TikToks &amp; long-form YouTube videos.</div>
+            <ul class="plan-list">
+              <li>30 Full HD videos per day (up to 10 min long)</li>
+              <li>All 38+ voices across 16+ world languages</li>
+              <li>Kinetic Pop, Slide &amp; Neon Glow captions</li>
+              <li>Instant, Fast &amp; Medium intelligence modes</li>
+              <li>Auto Cover Thumbnails + YT/IG/FB SEO Packs</li>
+            </ul>
+            <button class="btn-primary-full" data-select-plan="pro">Upgrade to Creator Pro</button>
+          </div>
+
+          <div class="plan-card">
+            <div class="plan-tier">AGENCY STUDIO</div>
+            <div class="plan-price">$49<span>/month</span></div>
+            <div class="plan-desc">Unlimited high-volume production power for media brands and global teams.</div>
+            <ul class="plan-list">
+              <li>Unlimited 5-Agent video productions</li>
+              <li>Editable storyboard &amp; approval workflow</li>
+              <li>Priority Full HD 1080p cinema mastering</li>
+              <li>Custom studio presets &amp; multi-country packs</li>
+            </ul>
+            <button class="btn-outline-full" data-select-plan="agency">Get Agency Studio</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="land-footer">
+      <div class="land-container land-footer-inner">
+        <div class="brand-lockup">
+          <span class="brand-mark small" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="2" width="20" height="20" rx="6" fill="currentColor"/>
+              <path d="M8 16V8l8 8V8" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="brand-word">NEXUS</span>
+          <span class="footer-note">Global AI Workspace &amp; Video Studio</span>
+        </div>
+        <div class="footer-links">
+          <button data-open-workspace="chat">Start Chat</button>
+          <button data-open-workspace="factory">Video Studio</button>
+          <button data-open-workspace="seo">Global Trends</button>
+          <button data-open-auth="signup">Create Account</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- CLEAN PURE-WHITE WORKSPACE (CHAT + VIDEO STUDIO + TRENDS + PLANS)     -->
+  <!-- ===================================================================== -->
+  <div class="app-shell hidden" id="workspaceView">
+    <!-- FAR-LEFT ULTRA-SLIM ICON RAIL -->
+    <aside class="icon-rail" aria-label="Primary navigation">
+      <button class="rail-btn" id="btnBackHome" title="Home Page">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>
+      </button>
+      <div class="rail-div"></div>
+      <button class="rail-btn active" data-view="chat" title="Chat">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </button>
+      <button class="rail-btn" data-view="factory" title="Video Studio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="15" height="14" rx="2.5"/><path d="m17 10 5-3v10l-5-3z"/></svg>
+      </button>
+      <button class="rail-btn" data-view="seo" title="Global Trend Radar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
+      </button>
+      <button class="rail-btn" data-view="plans" title="Plans">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </button>
+    </aside>
+
+    <!-- CLEAN SIDEBAR -->
+    <aside class="history-sidebar" id="historySidebar">
+      <div class="sb-top">
+        <button class="sb-brand-btn" id="btnBrandHome" title="Back to Homepage">
+          <span class="brand-mark tiny" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="2" width="20" height="20" rx="6" fill="currentColor"/>
+              <path d="M8 16V8l8 8V8" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="sb-brand">NEXUS</span>
+        </button>
+        <div class="sb-top-actions">
+          <button class="icon-btn" id="btnToggleSidebar" title="Collapse sidebar">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 3v18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <button class="sb-new-chat" id="btnNewChat">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        <span>New chat</span>
+      </button>
+
+      <div class="sb-scroll">
+        <div class="sb-group-label">Workspace</div>
+        <div class="sb-list">
+          <button class="sb-item" data-goto-view="factory">5-Agent Video Studio</button>
+          <button class="sb-item" data-goto-view="seo">Global Trend Radar</button>
+          <button class="sb-item" data-quick-chat="Write a high-retention 35-second viral video script on AI productivity hacks">Quick Viral Script</button>
+        </div>
+
+        <div class="sb-group-label">Video Projects</div>
+        <div class="sb-list" id="projectList">
+          <div class="sb-empty">No videos yet</div>
+        </div>
+
+        <div class="sb-group-label">Recents</div>
+        <div class="sb-list" id="chatHistoryList">
+          <div class="sb-empty">No recent chats</div>
+        </div>
+      </div>
+
+      <div class="sb-footer" id="sbAuthFooter">
+        <div class="auth-guest-actions" id="guestFooter">
+          <button class="sb-auth-primary" id="btnOpenLogin">Sign in</button>
+          <button class="sb-auth-secondary" id="btnOpenSignup">Create account</button>
+        </div>
+        <div class="auth-user-card hidden" id="userFooter">
+          <div class="user-row">
+            <span class="user-av" id="userAvatar">U</span>
+            <div class="user-info">
+              <div class="user-name" id="userName">User</div>
+              <div class="user-plan" id="userPlanLabel">FREE Plan</div>
+            </div>
+            <button class="icon-btn" id="btnLogout" title="Sign out">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            </button>
+          </div>
+          <button class="sb-upgrade-btn" data-goto-view="plans">Upgrade Plan</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN PURE WHITE CANVAS -->
+    <main class="canvas">
+      <header class="canvas-topbar">
+        <div class="tb-left">
+          <button class="icon-btn hidden" id="btnReopenSidebar" title="Show sidebar">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 3v18"/></svg>
+          </button>
+          <button class="btn-home-pill" id="btnTopHome">Home</button>
+        </div>
+
+        <nav class="mode-switcher" aria-label="Workspace mode">
+          <button class="mode-tab active" data-view="chat">Chat</button>
+          <button class="mode-tab" data-view="factory">Video Studio</button>
+          <button class="mode-tab" data-view="seo">Trends</button>
+          <button class="mode-tab" data-view="plans">Plans</button>
+        </nav>
+
+        <div class="tb-right">
+          <button class="btn-top-login" id="btnTopLogin">Log in</button>
+        </div>
+      </header>
+
+      <!-- ================= VIEW 1: REFINED HUMAN-LIKE CHAT ================= -->
+      <section class="view-panel active" id="view-chat">
+        <div class="chat-stage is-empty" id="chatStage">
+          <div class="chat-welcome" id="chatWelcome">
+            <div class="welcome-orb" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M7 16V8l10 8V8" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h1 class="welcome-title">Where should we start?</h1>
+            <p class="welcome-sub">Ask anything in any language — brainstorm ideas, write scripts, solve tough problems, or launch a 5-agent video.</p>
+          </div>
+
+          <div class="chat-thread" id="chatMessages"></div>
+
+          <div class="chat-composer-shell">
+            <div class="chat-pill-box">
+              <div class="plus-menu-wrap">
+                <button class="pill-plus-btn" id="btnPlusMenu" title="Quick actions">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                </button>
+                <div class="plus-popover hidden" id="plusPopover">
+                  <button data-plus-prompt="Create a 35-second viral English Reel about the top 3 AI tools changing work in 2026">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="m17 10 5-3v10l-5-3z"/></svg>
+                    <span>Create 5-Agent Video</span>
+                  </button>
+                  <button data-goto="factory">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                    <span>Open Video Studio</span>
+                  </button>
+                  <button data-goto="seo">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/></svg>
+                    <span>Global Trend Radar</span>
+                  </button>
+                </div>
+              </div>
+
+              <textarea id="chatInput" rows="1" placeholder="Message NEXUS in any language..."></textarea>
+
+              <div class="pill-right-controls">
+                <div class="model-dropdown-wrap">
+                  <button class="model-drop-btn" id="btnModelDrop">
+                    <span id="activeModelLabel">Instant</span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+                  </button>
+                  <div class="model-dropdown-menu hidden" id="modelDropdownMenu"></div>
+                </div>
+
+                <button class="pill-send-btn" id="btnSendChat" title="Send message">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="chat-starter-grid" id="chatSubtleChips">
+              <button class="starter-card" data-msg="Mujhe ek honest, practical roadmap do ke 2026 mein ek solo creator apna brand zero se kaise grow kare">
+                <span class="sc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></span>
+                <div><strong>Growth Strategy</strong><span>Practical 2026 creator roadmap</span></div>
+              </button>
+              <button class="starter-card" data-msg="Create a 35-second viral Urdu Reel about 3 smart daily habits that double focus">
+                <span class="sc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="m17 10 5-3v10l-5-3z"/></svg></span>
+                <div><strong>Launch a Reel</strong><span>35s Urdu Viral Typography video</span></div>
+              </button>
+              <button class="starter-card" data-msg="Explain quantum computing in 5 simple everyday sentences anyone can understand">
+                <span class="sc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></span>
+                <div><strong>Simple Clarity</strong><span>Complex topics made effortless</span></div>
+              </button>
+              <button class="starter-card" data-msg="Give me 5 sharp, non-cliche YouTube hooks for a tech channel targeting global viewers">
+                <span class="sc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
+                <div><strong>Viral Hooks</strong><span>High-retention opening lines</span></div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VIEW 2: NEXT-GEN GLOBAL VIDEO STUDIO ================= -->
+      <section class="view-panel" id="view-factory">
+        <div class="studio-container">
+          <div class="studio-hero-head">
+            <div>
+              <span class="sec-kicker">5-AGENT PRODUCTION STUDIO</span>
+              <h2 class="page-h2">Create Studio-Grade Videos Worldwide</h2>
+              <p class="page-sub">Choose any language, realistic voice, visual style, and kinetic caption animation — our 5 autonomous agents handle everything end-to-end.</p>
+            </div>
+            <div class="studio-head-right">
+              <span class="quota-pill" id="studioQuotaPill">1 Free Trial Video ($0)</span>
+              <div class="seg-pills" id="studioModelPills"></div>
+            </div>
+          </div>
+
+          <!-- MODERN STUDIO WORKBENCH COMPOSER -->
+          <div class="studio-workbench">
+            <div class="vidu-input-row">
+              <input type="text" id="topicInput" class="vidu-topic-input" placeholder="Describe your video idea in any language (e.g., '3 habits that rewire your focus')..." />
+              <button class="btn-primary-pill" id="btnLaunchTeam">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                <span>Create Video</span>
+              </button>
+            </div>
+
+            <!-- STYLE PRESET CARDS -->
+            <div class="style-strip" id="styleCards">
+              <button class="style-chip active" data-style="Viral Typography">
+                <span class="st-swatch swatch-typo">Aa</span>
+                <span><strong>Viral Typography</strong><small>Warm parchment &amp; 3-font kinetic</small></span>
+              </button>
+              <button class="style-chip" data-style="Realistic Cinema">
+                <span class="st-swatch swatch-cinema">HD</span>
+                <span><strong>Realistic Cinema</strong><small>Editorial visuals &amp; karaoke pop</small></span>
+              </button>
+              <button class="style-chip" data-style="Motion Graphics Pro">
+                <span class="st-swatch swatch-motion">3D</span>
+                <span><strong>Motion Graphics</strong><small>Sleek studio depth &amp; highlights</small></span>
+              </button>
+              <button class="style-chip" data-style="Documentary Vox">
+                <span class="st-swatch swatch-doc">DOC</span>
+                <span><strong>Documentary</strong><small>Story-first editorial pacing</small></span>
+              </button>
+              <button class="style-chip" data-style="Luxury Editorial">
+                <span class="st-swatch swatch-lux">LUX</span>
+                <span><strong>Luxury Editorial</strong><small>Golden minimalism &amp; clean cuts</small></span>
+              </button>
+            </div>
+
+            <!-- CORE CONTROLS ROW -->
+            <div class="studio-controls-grid">
+              <div class="ctrl-field">
+                <label>Aspect Ratio</label>
+                <div class="seg-pills full-seg" id="formatGroup">
+                  <button class="seg-pill active" data-val="9:16">9:16 Vertical</button>
+                  <button class="seg-pill" data-val="16:9">16:9 YouTube</button>
+                </div>
+              </div>
+
+              <div class="ctrl-field">
+                <label>Global Language (16+)</label>
+                <select id="languageSelect" class="clean-select full">
+                  <option value="English" selected>English (Global)</option>
+                  <option value="Urdu">Urdu (Pakistan / India)</option>
+                  <option value="Roman Urdu">Roman Urdu</option>
+                  <option value="Hindi">Hindi (India)</option>
+                  <option value="Arabic">Arabic (Saudi / UAE / Egypt)</option>
+                  <option value="Spanish">Spanish (Global / MX / ES)</option>
+                  <option value="French">French (France)</option>
+                  <option value="German">German (Germany)</option>
+                  <option value="Portuguese">Portuguese (Brazil)</option>
+                  <option value="Turkish">Turkish (Turkey)</option>
+                  <option value="Indonesian">Indonesian</option>
+                  <option value="Italian">Italian</option>
+                  <option value="Japanese">Japanese</option>
+                  <option value="Korean">Korean</option>
+                  <option value="Chinese">Chinese (Mandarin)</option>
+                  <option value="Russian">Russian</option>
+                </select>
+              </div>
+
+              <div class="ctrl-field">
+                <label>Duration</label>
+                <select id="durationSelect" class="clean-select full">
+                  <option value="30">30s — Quick Reel</option>
+                  <option value="35" selected>35s — Viral Short</option>
+                  <option value="45">45s — Short Story</option>
+                  <option value="60">60s — Full Reel</option>
+                  <option value="180">3 min — Deep Dive</option>
+                  <option value="300">5 min — YouTube</option>
+                  <option value="600">10 min — Documentary</option>
+                </select>
+              </div>
+
+              <div class="ctrl-field">
+                <label>Caption Animation</label>
+                <select id="captionAnimSelect" class="clean-select full">
+                  <option value="pop" selected>Kinetic Scale Pop</option>
+                  <option value="slide">Smooth Slide-Up</option>
+                  <option value="glow">Neon Glow Pulse</option>
+                  <option value="classic">Clean Editorial</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- VOICE & PRODUCTION OPTIONS ROW -->
+            <div class="studio-voice-bar">
+              <div class="ctrl-field voice-grow">
+                <label>Natural Studio Voice (38 Global Voices)</label>
+                <div class="voice-pick-row">
+                  <select id="voiceSelect" class="clean-select full">
+                    <option value="auto" selected>Auto Match Selected Language</option>
+                  </select>
+                  <button class="btn-outline-sm" id="btnPreviewVoice" type="button">Listen</button>
+                </div>
+              </div>
+
+              <div class="ctrl-field">
+                <label>Visual Engine</label>
+                <select id="visualModeSelect" class="clean-select full">
+                  <option value="hybrid" selected>Auto Cinema Mix</option>
+                  <option value="ai_images">AI Generated Art</option>
+                  <option value="stock">HD Footage First</option>
+                </select>
+              </div>
+
+              <div class="studio-toggles">
+                <label class="clean-check"><input type="checkbox" id="chkCaptions" checked /> <span>Animated Captions</span></label>
+                <label class="clean-check"><input type="checkbox" id="chkMusic" checked /> <span>Music &amp; SFX</span></label>
+                <label class="clean-check"><input type="checkbox" id="chkApproval" /> <span>Review Script First</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="idea-row">
+            <span class="mini-label">Quick Ideas:</span>
+            <button class="subtle-chip idea-chip" data-topic="3 AI tools replacing full agencies in 2026">AI Tools 2026</button>
+            <button class="subtle-chip idea-chip" data-topic="Why 90% of people stay stuck — and the 5-minute reset">Mindset Reset</button>
+            <button class="subtle-chip idea-chip" data-topic="2026 ke best free AI skills jo ghar baithe seekh sakte hain">Urdu AI Skills</button>
+            <button class="subtle-chip idea-chip" data-topic="The future of robotics and clean energy in the next 5 years">Future Tech</button>
+          </div>
+
+          <!-- REALISTIC 5-AGENT PIPELINE STEPPER (CUSTOM SVG ICONS — ZERO EMOJIS!) -->
+          <div class="stepper-section">
+            <div class="stepper-head">
+              <div class="stepper-head-left">
+                <span class="mini-label">5-AGENT PIPELINE</span>
+                <div class="pipeline-progress-track"><div class="pipeline-progress-fill" id="pipelineProgressFill"></div></div>
+              </div>
+              <span class="status-pill" id="projectStatusBadge">Ready</span>
+            </div>
+
+            <div class="stepper-strip">
+              <button class="step-card active" data-emp="emp1" data-tab="research">
+                <div class="step-top">
+                  <span class="step-svg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+                  <span class="step-num">01</span>
+                  <span class="step-dot" id="orb-emp1"></span>
+                </div>
+                <div class="step-name">Researcher</div>
+                <div class="step-sub">Global Trend Intel</div>
+                <div class="step-meta" id="meta-emp1">Standby</div>
+              </button>
+              <div class="step-line" id="cond-1"></div>
+
+              <button class="step-card" data-emp="emp2" data-tab="strategy">
+                <div class="step-top">
+                  <span class="step-svg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></span>
+                  <span class="step-num">02</span>
+                  <span class="step-dot" id="orb-emp2"></span>
+                </div>
+                <div class="step-name">Strategist</div>
+                <div class="step-sub">Retention Blueprint</div>
+                <div class="step-meta" id="meta-emp2">Standby</div>
+              </button>
+              <div class="step-line" id="cond-2"></div>
+
+              <button class="step-card" data-emp="emp3" data-tab="script">
+                <div class="step-top">
+                  <span class="step-svg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
+                  <span class="step-num">03</span>
+                  <span class="step-dot" id="orb-emp3"></span>
+                </div>
+                <div class="step-name">Scriptwriter</div>
+                <div class="step-sub">Script &amp; SEO Pack</div>
+                <div class="step-meta" id="meta-emp3">Standby</div>
+              </button>
+              <div class="step-line" id="cond-3"></div>
+
+              <button class="step-card" data-emp="emp4" data-tab="assets">
+                <div class="step-top">
+                  <span class="step-svg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></span>
+                  <span class="step-num">04</span>
+                  <span class="step-dot" id="orb-emp4"></span>
+                </div>
+                <div class="step-name">Producer</div>
+                <div class="step-sub">Voice &amp; HD Visuals</div>
+                <div class="step-meta" id="meta-emp4">Standby</div>
+              </button>
+              <div class="step-line" id="cond-4"></div>
+
+              <button class="step-card" data-emp="emp5" data-tab="cinema">
+                <div class="step-top">
+                  <span class="step-svg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="m10 9 5 3-5 3V9Z"/></svg></span>
+                  <span class="step-num">05</span>
+                  <span class="step-dot" id="orb-emp5"></span>
+                </div>
+                <div class="step-name">Editor</div>
+                <div class="step-sub">Cinema Mastering</div>
+                <div class="step-meta" id="meta-emp5">Standby</div>
+              </button>
+            </div>
+          </div>
+
+          <div class="approval-bar hidden" id="approvalBanner">
+            <span><strong>Review Checkpoint:</strong> Edit any scene below, then approve to render your final video.</span>
+            <button class="btn-primary-pill btn-sm" id="btnApproveRender">Approve &amp; Render</button>
+          </div>
+
+          <div class="clean-card inspector-box" id="inspectorStage">
+            <div class="empty-state" id="stageEmpty">
+              <div class="empty-svg-badge">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="15" height="14" rx="2.5"/><path d="m17 10 5-3v10l-5-3z"/></svg>
+              </div>
+              <h3>Ready to produce your next video</h3>
+              <p>Enter a topic above or select an existing project from the sidebar. Inspect every agent stage — research, strategy, editable scripts, audio previews, and your Full HD master export.</p>
+            </div>
+            <div class="stage-pane hidden" id="pane-research"></div>
+            <div class="stage-pane hidden" id="pane-strategy"></div>
+            <div class="stage-pane hidden" id="pane-script"></div>
+            <div class="stage-pane hidden" id="pane-assets"></div>
+            <div class="stage-pane hidden" id="pane-cinema"></div>
+          </div>
+
+          <div class="clean-card console-card">
+            <button class="console-toggle" id="btnToggleConsole">
+              <span>Production Activity Log</span>
+              <span id="consoleCount">0 events ▾</span>
+            </button>
+            <div class="console-body collapsed" id="consoleBody"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VIEW 3: GLOBAL SEARCH TREND RADAR ================= -->
+      <section class="view-panel" id="view-seo">
+        <div class="studio-container">
+          <div class="studio-hero-head">
+            <div>
+              <span class="sec-kicker">REAL-TIME SEARCH INTELLIGENCE</span>
+              <h2 class="page-h2">Global Search Trend Radar</h2>
+              <p class="page-sub">Scan live Google &amp; YouTube search demand across 20+ countries worldwide, then send any winning topic straight to Video Studio.</p>
+            </div>
+            <span class="status-pill ok">Live Worldwide Data</span>
+          </div>
+
+          <div class="studio-workbench">
+            <div class="vidu-input-row">
+              <input type="text" id="seoTopicInput" class="vidu-topic-input" placeholder="Enter any keyword or niche (e.g., 'ai tools', 'fitness habits', 'business ideas')..." />
+              <select id="seoGeoSelect" class="clean-select">
+                <option value="US" selected>United States / Global</option>
+                <option value="PK">Pakistan</option>
+                <option value="IN">India</option>
+                <option value="GB">United Kingdom</option>
+                <option value="AE">United Arab Emirates</option>
+                <option value="SA">Saudi Arabia</option>
+                <option value="CA">Canada</option>
+                <option value="AU">Australia</option>
+                <option value="DE">Germany</option>
+                <option value="FR">France</option>
+                <option value="ES">Spain</option>
+                <option value="MX">Mexico</option>
+                <option value="BR">Brazil</option>
+                <option value="TR">Turkey</option>
+                <option value="ID">Indonesia</option>
+                <option value="IT">Italy</option>
+                <option value="JP">Japan</option>
+                <option value="KR">South Korea</option>
+                <option value="EG">Egypt</option>
+                <option value="NG">Nigeria</option>
+              </select>
+              <button class="btn-primary-pill" id="btnRunSeoRadar">Scan Trends</button>
+            </div>
+          </div>
+
+          <div id="seoResults">
+            <div class="clean-card inspector-box">
+              <div class="empty-state">
+                <div class="empty-svg-badge">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
+                </div>
+                <h3>Live Worldwide Search Demand</h3>
+                <p>Select any country and scan a topic above to discover real Google &amp; YouTube queries people are typing right now.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VIEW 4: PLANS ================= -->
+      <section class="view-panel" id="view-plans">
+        <div class="studio-container">
+          <div class="studio-hero-head">
+            <div>
+              <span class="sec-kicker">MEMBERSHIP PLANS</span>
+              <h2 class="page-h2">Upgrade your NEXUS Studio</h2>
+              <p class="page-sub">Start with 1 free Full HD trial video ($0), then upgrade for unlimited global creation.</p>
+            </div>
+          </div>
+
+          <div class="plans-grid">
+            <div class="plan-card">
+              <div class="plan-tier">FREE TRIAL</div>
+              <div class="plan-price">$0<span>/forever</span></div>
+              <div class="plan-desc">Experience real NEXUS quality with 1 free studio video &amp; fast AI chat.</div>
+              <ul class="plan-list">
+                <li>1 Free Full HD Video Trial</li>
+                <li>Fast human-like conversational AI</li>
+                <li>Global Search Trend Radar (20+ countries)</li>
+                <li>Live preview of all 38+ voices</li>
+              </ul>
+              <button class="btn-outline-full" data-select-plan="free">Free Plan</button>
+            </div>
+
+            <div class="plan-card featured">
+              <div class="plan-badge">MOST POPULAR</div>
+              <div class="plan-tier">CREATOR PRO</div>
+              <div class="plan-price">$19<span>/month</span></div>
+              <div class="plan-desc">For creators publishing daily Shorts, Reels, TikToks &amp; YouTube videos.</div>
+              <ul class="plan-list">
+                <li>30 Full HD videos/day (up to 10 min)</li>
+                <li>All 38+ natural voices in 16+ languages</li>
+                <li>Kinetic Pop, Slide &amp; Neon Glow captions</li>
+                <li>Instant, Fast &amp; Medium intelligence modes</li>
+                <li>No watermark + YT/IG/FB SEO packs</li>
+              </ul>
+              <button class="btn-primary-full" data-select-plan="pro">Get Creator Pro</button>
+            </div>
+
+            <div class="plan-card">
+              <div class="plan-tier">AGENCY STUDIO</div>
+              <div class="plan-price">$49<span>/month</span></div>
+              <div class="plan-desc">Unlimited 5-Agent production power for brands, agencies, and teams.</div>
+              <ul class="plan-list">
+                <li>Unlimited 5-Agent video productions</li>
+                <li>Editable storyboard &amp; approval workflow</li>
+                <li>Priority Full HD 1080p cinema mastering</li>
+                <li>Custom studio presets &amp; global packs</li>
+              </ul>
+              <button class="btn-outline-full" data-select-plan="agency">Get Agency Studio</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- FULL-PAGE SPLIT-SCREEN LOGIN & SIGN-UP EXPERIENCE (/login & /signup) -->
+  <div class="auth-page hidden" id="authModal">
+    <div class="auth-split">
+      <div class="auth-left">
+        <button class="auth-back-btn" id="btnCloseAuth">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          <span>Back</span>
+        </button>
+
+        <div class="auth-left-body">
+          <div class="brand-lockup" style="margin-bottom:26px;">
+            <span class="brand-mark" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="2" width="20" height="20" rx="6" fill="currentColor"/>
+                <path d="M8 16V8l8 8V8" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="brand-word" style="font-size:18px;">NEXUS</span>
+          </div>
+          <h2 class="auth-hero-h2">Your global AI partner &amp; 5-agent video studio.</h2>
+          <p class="auth-hero-p">Sign in once to access ultra-fast multilingual chat, 38+ realistic voices across 16+ languages, and Full HD animated video production.</p>
+
+          <div class="auth-perks">
+            <div class="auth-perk">
+              <span class="perk-check">✓</span>
+              <div><strong>1 Free Full HD Trial Video ($0)</strong><span>Test real studio quality before choosing a plan</span></div>
+            </div>
+            <div class="auth-perk">
+              <span class="perk-check">✓</span>
+              <div><strong>Human-Like Global Chat</strong><span>Natural replies in Urdu, English, Arabic, Spanish &amp; more</span></div>
+            </div>
+            <div class="auth-perk">
+              <span class="perk-check">✓</span>
+              <div><strong>Synced Workspace &amp; History</strong><span>All video projects, scripts, and chats saved cleanly</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-left-foot">Trusted by creators worldwide • 16+ Languages</div>
+      </div>
+
+      <div class="auth-right">
+        <div class="auth-card-page">
+          <div class="auth-top">
+            <div>
+              <h3 id="authTitle">Welcome back</h3>
+              <p class="auth-sub" id="authSubtitle">Sign in to sync your chats, video studio projects, and plans.</p>
+            </div>
+          </div>
+
+          <div class="auth-tabs">
+            <button class="auth-tab active" data-auth-mode="login">Sign in</button>
+            <button class="auth-tab" data-auth-mode="signup">Create account</button>
+          </div>
+
+          <form id="authForm" class="auth-form">
+            <div class="auth-field hidden" id="authNameWrap">
+              <label>Full Name</label>
+              <input type="text" id="authNameInput" placeholder="e.g. Alex Rivera" />
+            </div>
+            <div class="auth-field">
+              <label>Email address</label>
+              <input type="email" id="authEmailInput" required placeholder="you@example.com" />
+            </div>
+            <div class="auth-field">
+              <label>Password</label>
+              <div class="pw-input-wrap">
+                <input type="password" id="authPassInput" required minlength="6" placeholder="At least 6 characters" />
+                <button type="button" class="pw-toggle-btn" id="btnTogglePw">Show</button>
+              </div>
+            </div>
+            <div class="auth-err hidden" id="authError"></div>
+            <button type="submit" class="btn-primary-full" id="btnAuthSubmit">Sign in</button>
+          </form>
+
+          <div class="auth-switch-foot" id="authSwitchFoot">
+            <span>New to NEXUS?</span>
+            <button type="button" id="btnQuickSwitchAuth">Create a free account</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO SHOWCASE MODAL PLAYER -->
+  <div class="video-modal hidden" id="videoModal">
+    <div class="video-modal-card">
+      <div class="video-modal-head">
+        <div>
+          <strong id="vmTitle">Studio Creation</strong>
+          <small id="vmMeta">1080p HD</small>
+        </div>
+        <button class="icon-btn" id="btnCloseVideoModal">✕</button>
+      </div>
+      <div class="video-modal-stage">
+        <video id="vmPlayer" controls playsinline></video>
+      </div>
+      <div class="video-modal-foot">
+        <span class="vm-note">Created with NEXUS 5-Agent Studio</span>
+        <button class="btn-primary-pill btn-sm" id="btnVmCreateOwn">Create Your Own Video</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HIDDEN VOICE PREVIEW AUDIO PLAYER -->
+  <audio id="voicePreviewPlayer" class="hidden"></audio>
+
+  <!-- IMAGE LIGHTBOX -->
+  <div class="lightbox hidden" id="lightbox">
+    <button class="lightbox-close" id="btnCloseLightbox">✕</button>
+    <img id="lightboxImg" src="" alt="Preview" />
+    <div class="lightbox-cap" id="lightboxCap"></div>
+  </div>
+
+  <div class="toast-stack" id="toastStack"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

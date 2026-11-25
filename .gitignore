@@ -1,0 +1,13 @@
+.venv/
+.tools/
+.browsers/
+_backups/
+__pycache__/
+*.pyc
+data/config.json
+data/users.json
+data/sessions.json
+data/guest_usage.json
+data/voice_samples/
+data/browser_shots/
+projects/*/_render_work/
